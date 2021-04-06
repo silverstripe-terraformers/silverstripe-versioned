@@ -7,8 +7,6 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 
 /**
- * Class RecursiveStagesService
- *
  * Functionality for detecting the need of publishing nested objects owned by common parent / ancestor object
  */
 class RecursiveStagesService implements RecursiveStagesInterface
