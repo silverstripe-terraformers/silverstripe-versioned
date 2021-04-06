@@ -11,6 +11,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
@@ -2071,7 +2072,10 @@ SQL
      */
     public function stagesDifferRecursive(string $mode = RecursiveStagesService::OWNERSHIP_STRONG): bool
     {
-        return RecursiveStagesService::singleton()->stagesDifferRecursive($this->owner, $mode);
+        /** @var RecursiveStagesInterface $service */
+        $service = Injector::inst()->get(RecursiveStagesInterface::class);
+
+        return $service->stagesDifferRecursive($this->owner, $mode);
     }
 
     /**
